@@ -1,0 +1,14 @@
+torch==2.1.0
+transformers==4.35.2
+colpali-engine==0.3.14
+pdf2image==1.17.0
+pypdf==4.0.1
+pytesseract==0.3.10
+Pillow==10.1.0
+google-cloud-storage==2.10.0
+google-cloud-functions==1.6.0
+functions-framework==3.5.0
+boto3==1.42.58
+python-dotenv==1.0.0
+pydantic==2.5.0
+google-generativeai>=0.3.0

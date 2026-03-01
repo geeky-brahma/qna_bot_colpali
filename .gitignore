@@ -1,0 +1,79 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.local.example
+
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# Build outputs
+build/
+dist/
+.next/
+out/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# GCP
+service-account-key.json
+credentials.json
+
+# Docker
+.dockerignore
+Dockerfile.dev
+
+# CI/CD
+.github/workflows/secrets*
+
+# Pinecone
+pinecone-backup/
+
+# Model files (too large)
+models/
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# Document files
+documents/
+*.pdf

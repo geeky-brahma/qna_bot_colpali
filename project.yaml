@@ -1,0 +1,73 @@
+schema_version: 1
+name: RAG Production System
+description: Production-grade Retrieval-Augmented Generation system
+version: 1.0.0
+
+components:
+  frontend:
+    name: Web UI
+    technology: Next.js 14, React 18, TypeScript
+    port: 3000
+    dependencies:
+      - api-backend
+
+  api_backend:
+    name: Query API
+    technology: FastAPI, Python 3.12
+    port: 8000
+    environment:
+      - PINECONE_API_KEY
+      - INFERENCE_FUNCTION_URL
+    dependencies:
+      - pinecone
+      - inference_backend
+
+  inference_backend:
+    name: Inference Service
+    technology: GCP Cloud Functions, Python 3.12
+    environment:
+      - GCP_PROJECT_ID
+      - GCP_BUCKET_NAME
+    dependencies:
+      - gcp_storage
+
+  pinecone:
+    name: Vector Cache
+    technology: Pinecone
+    cloud: managed
+
+  gcp_storage:
+    name: Document Storage
+    technology: Google Cloud Storage
+    cloud: gcp
+
+deployment:
+  frontend:
+    platform: Vercel
+    region: global
+    
+  api_backend:
+    platform: GCP Cloud Run
+    region: us-central1
+    memory: 2Gi
+    cpu: 2
+    
+  inference_backend:
+    platform: GCP Cloud Functions
+    region: us-central1
+    memory: 4Gb
+    timeout: 300s
+
+monitoring:
+  logs: GCP Cloud Logging
+  metrics: GCP Cloud Monitoring
+  alerts:
+    - error_rate_backend > 5%
+    - function_latency > 30s
+    - cache_connection_failures
+
+security:
+  authentication: Google OAuth 2.0
+  https: true
+  cors: configured
+  secrets: environment variables

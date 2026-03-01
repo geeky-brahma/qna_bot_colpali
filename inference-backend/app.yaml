@@ -1,0 +1,8 @@
+runtime: python312
+entrypoint: colpali_query
+env: cloud_function
+secretEnvironmentVariables:
+  - name: GCP_PROJECT_ID
+    key: gcp-project-id
+  - name: GCP_BUCKET_NAME
+    key: gcp-bucket-name
